@@ -10,7 +10,7 @@ import {
   SiMlflow,
   SiLangchain,
 } from "react-icons/si";
-import { ArrowRight, Mail, Sparkles, Terminal, Award, Cpu, Code2 } from "lucide-react";
+import { ArrowRight, Mail, Sparkles, Terminal } from "lucide-react";
 import TiltPhotoCard from "./TiltPhotoCard";
 import NotebookCard from "./NotebookCard";
 
@@ -43,7 +43,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative px-6 md:px-12 lg:px-16 pt-28 md:pt-32 pb-10 md:pb-12 flex items-center overflow-hidden">
       
-      <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 lg:gap-14 items-center w-full">
         
         {/* Left Column Content */}
         <motion.div
@@ -131,49 +131,54 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Column - Architectural Editorial Portrait Showcase */}
+        {/* Right Column - Dynamic Double-Layered Editorial Card Frame */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-          className="md:col-span-5 relative flex items-center justify-center lg:justify-end mt-4 md:mt-0"
+          className="md:col-span-5 relative flex items-center justify-center lg:justify-end mt-8 md:mt-0"
         >
-          {/* Architectural Outer Frame Backdrop */}
-          <div className="relative w-full max-w-[360px] sm:max-w-[400px] lg:max-w-[420px] p-3.5 sm:p-5 rounded-[36px] bg-[#F4EFEA] border border-[#E5DED6] shadow-sm flex flex-col justify-between">
+          {/* Outer Dynamic Floating Wrapper */}
+          <motion.div
+            animate={{ y: [-4, 4, -4], rotate: [-0.5, 0.5, -0.5] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="relative w-full max-w-[330px] sm:max-w-[360px] flex items-center justify-center"
+          >
             
-            {/* Subtle Corner Registration Crosses for Architectural Detail */}
-            <span className="absolute top-3 left-4 text-[10px] font-mono text-[#D6CDC3] select-none">+</span>
-            <span className="absolute top-3 right-4 text-[10px] font-mono text-[#D6CDC3] select-none">+</span>
-            <span className="absolute bottom-3 left-4 text-[10px] font-mono text-[#D6CDC3] select-none">+</span>
-            <span className="absolute bottom-3 right-4 text-[10px] font-mono text-[#D6CDC3] select-none">+</span>
+            {/* Double Layer 1: Backing Envelope Paper Card (Rotated Left) */}
+            <div className="absolute -inset-4 sm:-inset-5 rounded-[36px] bg-[#F4EFEA] border border-[#E5DED6] shadow-sm transform -rotate-3 pointer-events-none" />
+            
+            {/* Double Layer 2: Mid Accent Ring Frame (Rotated Right) */}
+            <div className="absolute -inset-2 rounded-[32px] border border-[#7B2D3C]/20 transform rotate-2 pointer-events-none" />
 
-            {/* Subtle Layered Paper Accent Frame (Offset behind photo) */}
-            <div className="absolute -inset-2.5 rounded-[40px] border border-[#7B2D3C]/15 pointer-events-none transform -rotate-1 transition-transform group-hover:rotate-0" />
-            <div className="absolute -inset-4 rounded-[44px] border border-[#E5DED6] pointer-events-none transform rotate-1 transition-transform group-hover:rotate-0" />
-
-            {/* Center Portrait Tilt Container */}
-            <div className="relative z-10 w-full rounded-[28px] overflow-hidden border-2 border-[#FDFBF7] shadow-xl bg-[#FAF7F2] p-2">
-              <TiltPhotoCard
-                src="/swati_photo.jpeg"
-                alt="Swati Singh"
-                className="w-full aspect-[4/5] sm:h-[400px] lg:h-[430px]"
-              />
-            </div>
-
-            {/* Integrated Minimalist Editorial Caption Strip (Inside mat, zero floating clutter) */}
-            <div className="relative z-10 pt-3.5 pb-1 px-2 flex items-center justify-between border-t border-[#E5DED6] mt-3.5 text-xs">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#7B2D3C]" />
-                <span className="font-heading font-bold tracking-tight text-[#1F1D1A]">
-                  SWATI SINGH
+            {/* Main Foreground Editorial Card Frame */}
+            <div className="relative z-10 w-full rounded-[28px] bg-[#FAF7F2] border-2 border-[#E5DED6] shadow-2xl p-4 sm:p-5 flex flex-col gap-3.5 overflow-hidden">
+              
+              {/* Card Header Strip */}
+              <div className="flex items-center justify-between pb-2.5 border-b border-[#E5DED6]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#7B2D3C]" />
+                  <span className="font-heading font-bold text-[#1F1D1A] tracking-wide text-xs sm:text-sm">
+                    SWATI SINGH
+                  </span>
+                </div>
+                <span className="font-mono text-[10px] tracking-widest text-[#7B2D3C] uppercase font-bold">
+                  ✦ AI/ML ENGINEER
                 </span>
               </div>
-              <span className="font-mono text-[10px] tracking-widest text-[#7B2D3C] uppercase font-semibold">
-                AI / ML ENGINEER
-              </span>
+
+              {/* Swati's Portrait Frame (100% untouched photo with Tilt physics) */}
+              <div className="w-full rounded-2xl overflow-hidden border border-[#E5DED6] bg-[#F4EFEA] p-1.5 shadow-sm">
+                <TiltPhotoCard
+                  src="/swati_photo.jpeg"
+                  alt="Swati Singh"
+                  className="w-full aspect-[4/5] sm:h-[350px] lg:h-[380px]"
+                />
+              </div>
+
             </div>
 
-          </div>
+          </motion.div>
         </motion.div>
 
       </div>
